@@ -9,14 +9,14 @@
  */
 static unsigned long _pow(unsigned int base, unsigned int exponent)
 {
-	unsigned int j;
-	unsigned long answer = base;
+	unsigned int i;
+	unsigned long ans = base;
 
-	for (j = 1; j < exponent; j++)
+	for (i = 1; i < exponent; i++)
 	{
-		answer *= base;
+		ans *= base;
 	}
-	return (answer);
+	return (ans);
 }
 
 /**
@@ -26,33 +26,33 @@ static unsigned long _pow(unsigned int base, unsigned int exponent)
  *
  * Return: number of digits printed
  */
-int print_hex(unsigned int m, unsigned int d)
+int print_hex(unsigned int n, unsigned int c)
 {
 	unsigned int a[8];
-	unsigned int j, k, sum;
+	unsigned int i, m, sum;
 	char diff;
 	int count;
 
-	k = 268435456; /* (16 ^ 7) */
-	if (d)
+	m = 268435456; /* (16 ^ 7) */
+	if (c)
 		diff = 'A' - ':';
 	else
 		diff = 'a' - ':';
-	a[0] = m / k;
-	for (j = 1; j < 8; j++)
+	a[0] = n / m;
+	for (i = 1; i < 8; i++)
 	{
-		k /= 16;
-		a[j] = (m / k) % 16;
+		m /= 16;
+		a[i] = (n / m) % 16;
 	}
-	for (j = 0, sum = 0, count = 0; j < 8; j++)
+	for (i = 0, sum = 0, count = 0; i < 8; i++)
 	{
-		sum += a[j];
-		if (sum || j == 7)
+		sum += a[i];
+		if (sum || i == 7)
 		{
-			if (a[j] < 10)
-				_putchar('0' + a[j]);
+			if (a[i] < 10)
+				_putchar('0' + a[i]);
 			else
-				_putchar('0' + diff + a[j]);
+				_putchar('0' + diff + a[i]);
 			count++;
 		}
 	}
@@ -73,7 +73,7 @@ int _print_hex_lower(va_list args)
 
 /**
  * _print_hex_upper - takes an unsigned int and prints it in
- * uppercase hex notation of the filfile
+ * uppercase hex notation
  * @args: arguments
  *
  * Return: number of digits printed
@@ -93,16 +93,16 @@ int _print_pointer(va_list args)
 {
 	int count = 0;
 	unsigned int a[16];
-	unsigned int j, sum;
-	unsigned long m, k;
+	unsigned int i, sum;
+	unsigned long n, m;
 	char *str = "(nil)";
 
-	m = va_arg(args, unsigned long);
-	if (m == 0)
+	n = va_arg(args, unsigned long);
+	if (n == 0)
 	{
-		for (j = 0; str[j]; j++)
+		for (i = 0; str[i]; i++)
 		{
-			_putchar(str[j]);
+			_putchar(str[i]);
 			count++;
 		}
 		return (count);
@@ -110,22 +110,22 @@ int _print_pointer(va_list args)
 	_putchar('0');
 	_putchar('x');
 	count = 2;
-	k = _pow(16, 15); /* 16 ^ 15 */
-	a[0] = m / k;
-	for (j = 1; j < 16; j++)
+	m = _pow(16, 15); /* 16 ^ 15 */
+	a[0] = n / m;
+	for (i = 1; i < 16; i++)
 	{
-		k /= 16;
-		a[j] = (m / k) % 16;
+		m /= 16;
+		a[i] = (n / m) % 16;
 	}
-	for (j = 0, sum = 0; j < 16; j++)
+	for (i = 0, sum = 0; i < 16; i++)
 	{
-		sum += a[j];
-		if (sum || j == 15)
+		sum += a[i];
+		if (sum || i == 15)
 		{
-			if (a[j] < 10)
-				_putchar('0' + a[j]);
+			if (a[i] < 10)
+				_putchar('0' + a[i]);
 			else
-				_putchar('0' + ('a' - ':') + a[j]);
+				_putchar('0' + ('a' - ':') + a[i]);
 			count++;
 		}
 	}
