@@ -91,7 +91,7 @@ int _print_str_nonprintable(va_list args)
 }
 /**
  * _print_str_reverse - prints a string in reverse
- * @args: arguments list
+ * @args: arguments list of the project
  *
  * Return: number of chars printed
  */
