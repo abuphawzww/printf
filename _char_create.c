@@ -8,20 +8,20 @@
  */
 static int hex_print(char c)
 {
-	int num;
+	int count;
 	char diff = 'A' - ':';
 	char d[2];
 
 	d[0] = c / 16;
 	d[1] = c % 16;
-	for (num = 0; num < 2; num++)
+	for (count = 0; count < 2; count++)
 	{
-		if (d[num] >= 10)
-			_putchar('0' + diff + d[num]);
+		if (d[count] >= 10)
+			_putchar('0' + diff + d[count]);
 		else
-			_putchar('0' + d[num]);
+			_putchar('0' + d[count]);
 	}
-	return (num);
+	return (count);
 }
 
 /**
@@ -46,16 +46,16 @@ int _print_char(va_list args)
  */
 int _print_str(va_list args)
 {
-	int num;
+	int count;
 	char *str = va_arg(args, char *);
 
 	if (str == NULL)
 		str = "(null)";
-	for (count = 0; str[num]; num++)
+	for (count = 0; str[count]; count++)
 	{
-		_putchar(str[num]);
+		_putchar(str[count]);
 	}
-	return (num);
+	return (count);
 }
 /**
  * _print_str_nonprintable - prints a string and nonprintable
@@ -66,49 +66,49 @@ int _print_str(va_list args)
  */
 int _print_str_nonprintable(va_list args)
 {
-	unsigned int j;
-	int num = 0;
+	unsigned int i;
+	int count = 0;
 	char *str = va_arg(args, char *);
 
 	if (str == NULL)
 		str = "(null)";
-	for (i = 0; str[j]; j++)
+	for (i = 0; str[i]; i++)
 	{
-		if (str[j] < 32 || str[j] >= 127)
+		if (str[i] < 32 || str[i] >= 127)
 		{
 			_putchar('\\');
 			_putchar('x');
-			num += 2;
-			num += hex_print(str[j]);
+			count += 2;
+			count += hex_print(str[i]);
 		}
 		else
 		{
-			_putchar(str[j]);
-			num++;
+			_putchar(str[i]);
+			count++;
 		}
 	}
-	return (num);
+	return (count);
 }
 /**
  * _print_str_reverse - prints a string in reverse
- * @args: arguments list of the project
+ * @args: arguments list
  *
  * Return: number of chars printed
  */
 int _print_str_reverse(va_list args)
 {
 	char *str;
-	int j, num = 0;
+	int i, count = 0;
 
 	str = va_arg(args, char *);
 	if (str == NULL)
 		str = ")llun(";
-	for (j = 0; str[j]; j++)
+	for (i = 0; str[i]; i++)
 		;
-	for (j -= 1; j >= 0; j--)
+	for (i -= 1; i >= 0; i--)
 	{
-		_putchar(str[j]);
-		num++;
+		_putchar(str[i]);
+		count++;
 	}
-	return (num);
+	return (count);
 }
