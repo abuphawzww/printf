@@ -9,35 +9,35 @@
 int _print_decimal(va_list args)
 {
 	int a[10];
-	int k, l, o, sum, num;
+	int j, m, n, sum, count;
 
-	o = va_arg(args, int);
-	num = 0;
-	l = 1000000000;
-	a[0] = o / l;
-	for (i = 1; i < 10; i++)
+	n = va_arg(args, int);
+	count = 0;
+	m = 1000000000;
+	a[0] = n / m;
+	for (j = 1; j < 10; j++)
 	{
-		l /= 10;
-		a[i] = (o / l) % 10;
+		m /= 10;
+		a[j] = (n / m) % 10;
 	}
-	if (o < 0)
+	if (n < 0)
 	{
 		_putchar('-');
-		num++;
-		for (i = 0; i < 10; i++)
-			a[i] *= -1;
+		count++;
+		for (j = 0; j < 10; j++)
+			a[j] *= -1;
 	}
-	for (i = 0, sum = 0; i < 10; i++)
+	for (j = 0, sum = 0; j < 10; j++)
 	{
-		sum += a[i];
-		if (sum != 0 || i == 9)
+		sum += a[j];
+		if (sum != 0 || j == 9)
 		{
-			_putchar('0' + a[i]);
-			num++;
+			_putchar('0' + a[j]);
+			count++;
 		}
 	}
 
-	return (num);
+	return (count);
 }
 
 /**
@@ -49,34 +49,34 @@ int _print_decimal(va_list args)
 int _print_int(va_list args)
 {
 	int a[10];
-	int k, l, o, sum, num;
+	int j, m, n, sum, count;
 
-	o = va_arg(args, int);
-	num = 0;
-	l = 1000000000;
-	a[0] = l / o;
-	for (i = 1; i < 10; i++)
+	n = va_arg(args, int);
+	count = 0;
+	m = 1000000000;
+	a[0] = n / m;
+	for (j = 1; j < 10; j++)
 	{
-		l /= 10;
-		a[i] = (o / l) % 10;
+		m /= 10;
+		a[j] = (n / m) % 10;
 	}
-	if (o < 0)
+	if (n < 0)
 	{
 		_putchar('-');
-		num++;
-		for (i = 0; i < 10; i++)
-			a[i] *= -1;
+		count++;
+		for (j = 0; j < 10; j++)
+			a[j] *= -1;
 	}
-	for (i = 0, sum = 0; i < 10; i++)
+	for (j = 0, sum = 0; j < 10; j++)
 	{
-		sum += a[i];
-		if (sum != 0 || i == 9)
+		sum += a[j];
+		if (sum != 0 || j == 9)
 		{
-			_putchar('0' + a[i]);
-			num++;
+			_putchar('0' + a[j]);
+			count++;
 		}
 	}
-	return (num);
+	return (count);
 }
 /**
  * _print_octal - takes an unsigned int and prints it in octal notation
@@ -87,25 +87,25 @@ int _print_int(va_list args)
 int _print_octal(va_list args)
 {
 	unsigned int a[11];
-	unsigned int j, l, o, sum;
-	int num;
+	unsigned int i, m, n, sum;
+	int count;
 
-	o = va_arg(args, unsigned int);
-	l = 1073741824; /* (8 ^ 10) */
-	a[0] = o / l;
-	for (j = 1; j < 11; j++)
+	n = va_arg(args, unsigned int);
+	m = 1073741824; /* (8 ^ 10) */
+	a[0] = n / m;
+	for (i = 1; i < 11; i++)
 	{
-		l /= 8;
-		a[j] = (o / l) % 8;
+		m /= 8;
+		a[i] = (n / m) % 8;
 	}
-	for (j = 0, sum = 0, num = 0; j < 11; j++)
+	for (i = 0, sum = 0, count = 0; i < 11; i++)
 	{
-		sum += a[j];
-		if (sum || j == 10)
+		sum += a[i];
+		if (sum || i == 10)
 		{
-			_putchar('0' + a[j]);
-			num++;
+			_putchar('0' + a[i]);
+			count++;
 		}
 	}
-	return (num);
+	return (count);
 }
