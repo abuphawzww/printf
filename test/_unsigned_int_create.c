@@ -32,7 +32,7 @@ int _print_binary(va_list args)
 	return (num);
 }
 /**
- * _print_uint - prints an unsigned in in decimal notation
+ * _print_uint - prints an unsigned int in decimal notation
  * @args: arguments
  *
  * Return: number of digits printed
