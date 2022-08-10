@@ -8,31 +8,31 @@
  */
 int _print_binary(va_list args)
 {
-	unsigned int b, c, j, sum;
+	unsigned int n, m, i, sum;
 	unsigned int a[32];
-	int num;
+	int count;
 
-	b = va_arg(args, unsigned int);
-	c = 2147483648; /* (2 ^ 31) */
-	a[0] = b / c;
-	for (j = 1; j < 32; j++)
+	n = va_arg(args, unsigned int);
+	m = 2147483648; /* (2 ^ 31) */
+	a[0] = n / m;
+	for (i = 1; i < 32; i++)
 	{
-		c /= 2;
-		a[i] = (b / c) % 2;
+		m /= 2;
+		a[i] = (n / m) % 2;
 	}
-	for (j = 0, sum = 0, num = 0; j < 32; j++)
+	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
-		sum += a[j];
-		if (sum || j == 31)
+		sum += a[i];
+		if (sum || i == 31)
 		{
-			_putchar('0' + a[j]);
-			num++;
+			_putchar('0' + a[i]);
+			count++;
 		}
 	}
-	return (num);
+	return (count);
 }
 /**
- * _print_uint - prints an unsigned int in decimal notation
+ * _print_uint - prints an unsigned in in decimal notation
  * @args: arguments
  *
  * Return: number of digits printed
@@ -40,25 +40,25 @@ int _print_binary(va_list args)
 int _print_uint(va_list args)
 {
 	unsigned int a[10];
-	unsigned int j, c, b, sum;
+	unsigned int i, m, n, sum;
 	int count;
 
-	b = va_arg(args, unsigned int);
-	c = 1000000000; /* (10 ^ 9) */
-	a[0] = b / c;
-	for (j = 1; j < 10; j++)
+	n = va_arg(args, unsigned int);
+	m = 1000000000; /* (10 ^ 9) */
+	a[0] = n / m;
+	for (i = 1; i < 10; i++)
 	{
-		c /= 10;
-		a[j] = (b  / c) % 10;
+		m /= 10;
+		a[i] = (n / m) % 10;
 	}
-	for (j = 0, sum = 0, num = 0; j < 10; j++)
+	for (i = 0, sum = 0, count = 0; i < 10; i++)
 	{
-		sum += a[j];
-		if (sum || j == 9)
+		sum += a[i];
+		if (sum || i == 9)
 		{
-			_putchar('0' + a[j]);
-			num++;
+			_putchar('0' + a[i]);
+			count++;
 		}
 	}
-	return (num);
+	return (count);
 }
