@@ -12,12 +12,12 @@ printer _get_printer(const char *specifier)
 	int j;
 	static printer printers[] = {
 		{"c", _print_char},
-		{"s", _print_str},
+		{"s", _print_var},
 		{"d", _print_decimal},
 		{"i", _print_int},
 		{"b", _print_binary},
-		{"S", _print_str_nonprintable},
-		{"r", _print_str_reverse},
+		{"S", _print_var_nonprintable},
+		{"r", _print_var_reverse},
 		{"R", _print_rot13},
 		{"u", _print_uint},
 		{"o", _print_octal},
