@@ -9,15 +9,15 @@
  */
 printer _get_printer(const char *specifier)
 {
-	int j;
+	int i;
 	static printer printers[] = {
 		{"c", _print_char},
-		{"s", _print_var},
+		{"s", _print_str},
 		{"d", _print_decimal},
 		{"i", _print_int},
 		{"b", _print_binary},
-		{"S", _print_var_nonprintable},
-		{"r", _print_var_reverse},
+		{"S", _print_str_nonprintable},
+		{"r", _print_str_reverse},
 		{"R", _print_rot13},
 		{"u", _print_uint},
 		{"o", _print_octal},
@@ -27,16 +27,16 @@ printer _get_printer(const char *specifier)
 		{NULL, NULL}
 	};
 
-	for (j = 0; printers[j].specifier != NULL; j++)
+	for (i = 0; printers[i].specifier != NULL; i++)
 	{
 		/**
 		 * This current implementation assumes the specifier is
 		 * one character long. This needs to be updated to
 		 * support specifiers containing more chatacters
 		 */
-		if (*specifier == *(printers[j].specifier))
+		if (*specifier == *(printers[i].specifier))
 			break;
 	}
 
-	return (printers[j]);
+	return (printers[i]);
 }
