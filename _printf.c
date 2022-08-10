@@ -1,10 +1,26 @@
 #include "main.h"
 
 /**
+ * _strlen - Returns the length of a string
+ * @s: The string
+ *
+ * Return: The length of the string
+ */
+int _strlen(const char *s)
+{
+	int len = 0;
+
+	while (s[len])
+		len++;
+
+	return (len);
+}
+
+/**
  * _printf - prints anything
  * @format: the format string
  *
- * Return: the number of characters printed of letter
+ * Return: the number of characters printed
  */
 int _printf(const char *format, ...)
 {
@@ -13,6 +29,8 @@ int _printf(const char *format, ...)
 	int i = 0;
 	int characters_printed = 0;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	while (format[i])
 	{
@@ -21,10 +39,10 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			characters_printed++;
 		}
-
 		if (!format[i])
 			return (characters_printed);
-
+		if (format[i] == '%' && _strlen(format) == 1)
+			return (-1);
 		printer = _get_printer(&format[i + 1]);
 		if (printer.specifier != NULL)
 		{
@@ -44,7 +62,6 @@ int _printf(const char *format, ...)
 		else
 			i++;
 	}
-
 	va_end(args);
 	return (characters_printed);
 }
