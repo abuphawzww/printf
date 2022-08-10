@@ -8,31 +8,31 @@
  */
 int _print_rot13(va_list args)
 {
-	char *var;
-	unsigned int m, n;
-	int num = 0;
+	char *str;
+	unsigned int i, j;
+	int count = 0;
 	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	var = va_arg(args, char *);
-	if (var == NULL)
-		var = "(ahyy)";
-	for (m = 0; var[m]; m++)
+	str = va_arg(args, char *);
+	if (str == NULL)
+		str = "(ahyy)";
+	for (i = 0; str[i]; i++)
 	{
-		for (n = 0; in[n]; n++)
+		for (j = 0; in[j]; j++)
 		{
-			if (in[n] == var[m])
+			if (in[j] == str[i])
 			{
-				_putchar(out[n]);
-				num++;
+				_putchar(out[j]);
+				count++;
 				break;
 			}
 		}
-		if (!in[n])
+		if (!in[j])
 		{
-			_putchar(var[m]);
-			num++;
+			_putchar(str[i]);
+			count++;
 		}
 	}
-	return (num);
+	return (count);
 }
