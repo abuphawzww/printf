@@ -73,7 +73,7 @@ int _print_hex_lower(va_list args)
 
 /**
  * _print_hex_upper - takes an unsigned int and prints it in
- * uppercase hex notation
+ * uppercase hex notation of the filfile
  * @args: arguments
  *
  * Return: number of digits printed
