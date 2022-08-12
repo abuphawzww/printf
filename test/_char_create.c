@@ -2,7 +2,7 @@
 
 /**
  * hex_print - prints a char's ascii value in uppercase hex
- * @c: char to print
+ * @c: char to print in the project
  *
  * Return: number of chars printed (always 2)
  */
